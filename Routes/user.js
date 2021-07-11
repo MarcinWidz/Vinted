@@ -20,6 +20,8 @@ router.post("/user/signup", async (req, res) => {
     const hash = SHA256(password, salt).toString(encBase64);
     const token = uid2(16);
     const doesExist = await User.findOne({ email: req.fields.email });
+    console.log({ doesExist });
+    console.log(req.fields);
     if (!req.fields.username) {
       res.json("Please insert a valid username");
     } else {
@@ -41,10 +43,10 @@ router.post("/user/signup", async (req, res) => {
           email: req.fields.email,
           account: newUser.account,
         };
-        const avatar = await cloudinary.uploader.upload(req.files.avatar.path, {
-          folder: `/vinted/users/${newUser._id}`,
-        });
-        console.log({ avatar });
+        // const avatar = await cloudinary.uploader.upload(req.files.avatar.path, {
+        //   folder: `/vinted/users/${newUser._id}`,
+        // });
+        // console.log({ avatar });
 
         newUser.account.avatar = avatar;
 

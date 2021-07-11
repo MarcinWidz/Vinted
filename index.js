@@ -8,7 +8,7 @@ require("dotenv").config();
 const app = express();
 app.use(formidable());
 
-mongoose.connect("mongodb://localhost/MONGODB_URI", {
+mongoose.connect("MONGODB_URI", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

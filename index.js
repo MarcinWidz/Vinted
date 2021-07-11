@@ -26,6 +26,6 @@ app.all("*", (req, res) => {
   res.status(404).json({ message: "Page not found !" });
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log("Server Started");
 });

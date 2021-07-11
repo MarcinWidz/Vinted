@@ -8,7 +8,7 @@ require("dotenv").config();
 const app = express();
 app.use(formidable());
 
-mongoose.connect("MONGODB_URI", {
+mongoose.connect("process.env.MONGODB_URI", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -26,6 +26,6 @@ app.all("*", (req, res) => {
   res.status(404).json({ message: "Page not found !" });
 });
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log("Server Started");
 });

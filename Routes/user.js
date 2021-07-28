@@ -23,10 +23,10 @@ router.post("/user/signup", async (req, res) => {
     console.log({ doesExist });
     console.log(req.fields);
     if (!req.fields.username) {
-      res.json("Please insert a valid username");
+      res.status(400).json("Please insert a valid username");
     } else {
       if (doesExist) {
-        res.json("You already have an account");
+        res.status(400).json("You already have an account");
       } else {
         const newUser = new User({
           email: req.fields.email,
@@ -48,10 +48,10 @@ router.post("/user/signup", async (req, res) => {
         // });
         // console.log({ avatar });
 
-        newUser.account.avatar = avatar;
+        // newUser.account.avatar = avatar;
 
         await newUser.save();
-        res.json(response);
+        res.json(newUser);
       }
     }
   } catch (error) {

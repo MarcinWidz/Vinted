@@ -39,7 +39,7 @@ router.post("/offer/publish", isAuthenticated, async (req, res) => {
 
     await offer.save();
     console.log(offer);
-    res.status(200).json(offer);
+    res.status(200).json({ offer });
   } catch (error) {
     res.status(400).json({ error: error.message });
   }
